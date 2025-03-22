@@ -13,25 +13,16 @@ public sealed partial class MainPage : Page
 
     private async Task<string?> DownloadFont()
     {
-        try
-        {
-            var sourceUri = new Uri("https://github.com/google/fonts/raw/refs/heads/main/ofl/monsieurladoulaise/MonsieurLaDoulaise-Regular.ttf");
-            var bytes = await HttpClient.GetByteArrayAsync(sourceUri);
+        var sourceUri = new Uri("https://github.com/google/fonts/raw/refs/heads/main/ofl/monsieurladoulaise/MonsieurLaDoulaise-Regular.ttf");
+        var bytes = await HttpClient.GetByteArrayAsync(sourceUri);
 
-            var localPath = Path.Combine("FONTS", "MonsieurLaDoulaise-Regular.ttf");
-            var path = Path.Combine(ApplicationData.Current.LocalFolder.Path, localPath); 
-            var folder = Path.GetDirectoryName(path);
-            Directory.CreateDirectory(folder);
+        var localPath = Path.Combine("FONTS", "MonsieurLaDoulaise-Regular.ttf");
+        var path = Path.Combine(ApplicationData.Current.LocalFolder.Path, localPath); 
+        var folder = Path.GetDirectoryName(path);
+        Directory.CreateDirectory(folder);
 
-            await File.WriteAllBytesAsync(path, bytes);
-            return localPath;
-
-        }
-        catch (Exception ex)
-        {
-            TextBlock.Text = ex.Message;
-            return null;
-        }
+        await File.WriteAllBytesAsync(path, bytes);
+        return localPath;
     }
 
     private void ApplyFont(string localPath)
