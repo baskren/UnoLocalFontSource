@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "SideloadedFont",
+  "display": "standalone",
+  "name": "SideloadedFont",
+  "short_name": "SideloadedFont",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}
